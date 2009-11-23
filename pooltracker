@@ -34,7 +34,6 @@
             }
             
             function size_pool(item) {
-                window.alert(item.parentNode.selectedIndex);
                 wave.getState().submitValue('cap', item.parentNode.selectedIndex);
             }
             
@@ -85,22 +84,22 @@
       <form>
         <label>Max Value</label>
         <select name="maxvalue" id="selector">
-          <option value="0" onclick="size_pool(item);">0</option>
-          <option value="1" onclick="size_pool(item);">1</option>
-          <option value="2" onclick="size_pool(item);">2</option>
-          <option value="3" onclick="size_pool(item);">3</option>
-          <option value="4" onclick="size_pool(item);">4</option>
-          <option value="5" onclick="size_pool(item);">5</option>
-          <option value="6" onclick="size_pool(item);">6</option>
-          <option value="7" onclick="size_pool(item);">7</option>
-          <option value="8" onclick="size_pool(item);">8</option>
-          <option value="9" onclick="size_pool(item);">9</option>
-          <option value="10" onclick="size_pool(item);">10</option>
-          <option value="11" onclick="size_pool(item);">11</option>
-          <option value="12" onclick="size_pool(item);">12</option>
-          <option value="13" onclick="size_pool(item);">13</option>
-          <option value="14" onclick="size_pool(item);">14</option>
-          <option value="15" onclick="size_pool(item);">15</option>
+          <option value="0" onclick="size_pool(this);">0</option>
+          <option value="1" onclick="size_pool(this);">1</option>
+          <option value="2" onclick="size_pool(this);">2</option>
+          <option value="3" onclick="size_pool(this);">3</option>
+          <option value="4" onclick="size_pool(this);">4</option>
+          <option value="5" onclick="size_pool(this);">5</option>
+          <option value="6" onclick="size_pool(this);">6</option>
+          <option value="7" onclick="size_pool(this);">7</option>
+          <option value="8" onclick="size_pool(this);">8</option>
+          <option value="9" onclick="size_pool(this);">9</option>
+          <option value="10" onclick="size_pool(this);">10</option>
+          <option value="11" onclick="size_pool(this);">11</option>
+          <option value="12" onclick="size_pool(this);">12</option>
+          <option value="13" onclick="size_pool(this);">13</option>
+          <option value="14" onclick="size_pool(this);">14</option>
+          <option value="15" onclick="size_pool(this);">15</option>
         </select>
       </form>
     ]]>
