@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Hello Wave" height="30">
+    <Require feature="wave" /> 
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[     
+       <style type="text/css">
+          body { font-size: 0.5em; }
+          ul { padding: 0; }
+          li { display: inline; height: 1em; float: left;  width : 1em;   margin: 0 0.1em; -moz-border-radius: 1em; -webkit-border-radius: 1em; }
+          li.unavalable { border: 1px solid grey; }
+          li.clear { cursor: pointer; }
+          li.empty, li.full{ border: 1px solid black; cursor: pointer; }
+          li.full { background-color: #000; }
+          li.empty { background-color: #DDD; }
+          form { display: inline; }
+          span.refresh { margin-left: 2em; cursor: pointer; }
+      </style>
+      <script type="text/javascript">
+            function set_pool(item) {
+                if (item.className != 'unavalable' ) {
+                    var element = item.parentNode;
+                    var count = 0;
+                    for (var i in element.childNodes) {
+                        var node = element.childNodes[i];
+                        if (node.className == 'full' || node.className == 'empty')
+                            count += 1;
+                        if (node == item)
+                            break;
+                    }
+                    wave.getState().submitValue('pool', count);
+                }
+            }
+            
+            function size_pool(item) {
+                wave.getState().submitValue('cap', item.parentNode.selectedIndex);
+            }
+            
+            function updatePool() {
+                var state = wave.getState();
+                var avalable = parseInt(state.get('cap', 10));
+                var active = parseInt(state.get('pool', 0));
+                
+                var element = document.getElementById("pool");
+                var count = 0;
+                for (var i in element.childNodes) {
+                    var node = element.childNodes[i];
+                    if (node.className == 'full' || node.className == 'empty' || node.className == 'unavalable') {
+                        if ( count >= avalable )
+                            node.className = 'unavalable';
+                        else if (count < active )
+                            node.className = 'full';
+                        else
+                            node.className = 'empty'; 
+                        count += 1;
+                    }
+                }
+                document.getElementById("selector").selectedIndex = avalable;
+            }
+            
+            gadgets.util.registerOnLoadHandler(function() { wave.setStateCallback(updatePool); });
+      </script>
+      <ul class="pool" id="pool">
+        <li class="clear" onClick="set_pool(this);">X</li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="breaker"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="breaker"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+        <li class="empty" onClick="set_pool(this);"></li>
+      </ul>
+      <form>
+        <label>Max Value</label>
+        <select name="maxvalue" id="selector">
+          <option value="0" onclick="size_pool(item);">0</option>
+          <option value="1" onclick="size_pool(item);">1</option>
+          <option value="2" onclick="size_pool(item);">2</option>
+          <option value="3" onclick="size_pool(item);">3</option>
+          <option value="4" onclick="size_pool(item);">4</option>
+          <option value="5" onclick="size_pool(item);">5</option>
+          <option value="6" onclick="size_pool(item);">6</option>
+          <option value="7" onclick="size_pool(item);">7</option>
+          <option value="8" onclick="size_pool(item);">8</option>
+          <option value="9" onclick="size_pool(item);">9</option>
+          <option value="10" onclick="size_pool(item);">10</option>
+          <option value="11" onclick="size_pool(item);">11</option>
+          <option value="12" onclick="size_pool(item);">12</option>
+          <option value="13" onclick="size_pool(item);">13</option>
+          <option value="14" onclick="size_pool(item);">14</option>
+          <option value="15" onclick="size_pool(item);">15</option>
+        </select>
+      </form>
+    ]]>
+  </Content>
+</Module>
