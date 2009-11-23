@@ -34,6 +34,7 @@
             }
             
             function size_pool(item) {
+                window.alert(item.parentNode.selectedIndex);
                 wave.getState().submitValue('cap', item.parentNode.selectedIndex);
             }
             
