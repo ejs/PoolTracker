@@ -34,7 +34,7 @@
             }
             
             function size_pool(item) {
-                wave.getState().submitValue('cap', item.parentNode.selectedIndex);
+                wave.getState().submitValue('cap', item.selectedIndex);
             }
             
             function updatePool() {
@@ -83,23 +83,23 @@
       </ul>
       <form>
         <label>Max Value</label>
-        <select name="maxvalue" id="selector">
-          <option value="0" onclick="size_pool(this);">0</option>
-          <option value="1" onclick="size_pool(this);">1</option>
-          <option value="2" onclick="size_pool(this);">2</option>
-          <option value="3" onclick="size_pool(this);">3</option>
-          <option value="4" onclick="size_pool(this);">4</option>
-          <option value="5" onclick="size_pool(this);">5</option>
-          <option value="6" onclick="size_pool(this);">6</option>
-          <option value="7" onclick="size_pool(this);">7</option>
-          <option value="8" onclick="size_pool(this);">8</option>
-          <option value="9" onclick="size_pool(this);">9</option>
-          <option value="10" onclick="size_pool(this);">10</option>
-          <option value="11" onclick="size_pool(this);">11</option>
-          <option value="12" onclick="size_pool(this);">12</option>
-          <option value="13" onclick="size_pool(this);">13</option>
-          <option value="14" onclick="size_pool(this);">14</option>
-          <option value="15" onclick="size_pool(this);">15</option>
+        <select name="maxvalue" id="selector" onClick="size_pool(this);">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
         </select>
       </form>
     ]]>
