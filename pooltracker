@@ -31,6 +31,10 @@
                     wave.getState().submitValue('pool', count);
                 }
             }
+
+            function set_cap(value) {
+                wave.getState().submitValue('cap', value);
+            }
             
             function updatePool() {
                 var state = wave.getState();
@@ -78,22 +82,22 @@
       <form>
         <label>Max Value</label>
         <select name="maxvalue" id="selector">
-          <option value="0" onClick="wave.getState().submitValue('cap', 0);">0</option>
-          <option value="1" onClick="wave.getState().submitValue('cap', 1);">1</option>
-          <option value="2" onClick="wave.getState().submitValue('cap', 2);">2</option>
-          <option value="3" onClick="wave.getState().submitValue('cap', 3);">3</option>
-          <option value="4" onClick="wave.getState().submitValue('cap', 4);">4</option>
-          <option value="5" onClick="wave.getState().submitValue('cap', 5);">5</option>
-          <option value="6" onClick="wave.getState().submitValue('cap', 6);">6</option>
-          <option value="7" onClick="wave.getState().submitValue('cap', 7);">7</option>
-          <option value="8" onClick="wave.getState().submitValue('cap', 8);">8</option>
-          <option value="9" onClick="wave.getState().submitValue('cap', 9);">9</option>
-          <option value="10" onClick="wave.getState().submitValue('cap', 10);">10</option>
-          <option value="11" onClick="wave.getState().submitValue('cap', 11);">11</option>
-          <option value="12" onClick="wave.getState().submitValue('cap', 12);">12</option>
-          <option value="13" onClick="wave.getState().submitValue('cap', 13);">13</option>
-          <option value="14" onClick="wave.getState().submitValue('cap', 14);">14</option>
-          <option value="15" onClick="wave.getState().submitValue('cap', 15);">15</option>
+          <option value="0" onClick="set_cap(0);">0</option>
+          <option value="1" onClick="set_cap(1);">1</option>
+          <option value="2" onClick="set_cap(2);">2</option>
+          <option value="3" onClick="set_cap(3);">3</option>
+          <option value="4" onClick="set_cap(4);">4</option>
+          <option value="5" onClick="set_cap(5);">5</option>
+          <option value="6" onClick="set_cap(6);">6</option>
+          <option value="7" onClick="set_cap(7);">7</option>
+          <option value="8" onClick="set_cap(8);">8</option>
+          <option value="9" onClick="set_cap(9);">9</option>
+          <option value="10" onClick="set_cap(10);">10</option>
+          <option value="11" onClick="set_cap(11);">11</option>
+          <option value="12" onClick="set_cap(12);">12</option>
+          <option value="13" onClick="set_cap(13);">13</option>
+          <option value="14" onClick="set_cap(14);">14</option>
+          <option value="15" onClick="set_cap(15);">15</option>
         </select>
       </form>
     ]]>
