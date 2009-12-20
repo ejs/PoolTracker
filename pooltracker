@@ -32,7 +32,8 @@
                 }
             }
 
-            function set_cap(value) {
+            function set_cap() {
+                value = document.getElementByID("Selector").selectedIndex;
                 window.alert(value);
                 wave.getState().submitValue('cap', value);
             }
@@ -82,7 +83,7 @@
       </ul>
       <form>
         <label>Max Value</label>
-        <select name="maxvalue" id="selector" onChange="set_cap(this.selectedIndex);">
+        <select name="maxvalue" id="selector" onClick="set_cap();">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -101,6 +102,7 @@
           <option value="15">15</option>
         </select>
       </form>
+      <button onClick="set_cap()" value="Set Cap" />
     ]]>
   </Content>
 </Module>
