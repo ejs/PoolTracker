@@ -77,23 +77,23 @@
       </ul>
       <form>
         <label>Max Value</label>
-        <select name="maxvalue" id="selector" onClick="wave.getState().submitValue('cap', this.selectedIndex);">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
+        <select name="maxvalue" id="selector">
+          <option value="0" onClick="wave.getState().submitValue('cap', 0);">0</option>
+          <option value="1" onClick="wave.getState().submitValue('cap', 1);">1</option>
+          <option value="2" onClick="wave.getState().submitValue('cap', 2);">2</option>
+          <option value="3" onClick="wave.getState().submitValue('cap', 3);">3</option>
+          <option value="4" onClick="wave.getState().submitValue('cap', 4);">4</option>
+          <option value="5" onClick="wave.getState().submitValue('cap', 5);">5</option>
+          <option value="6" onClick="wave.getState().submitValue('cap', 6);">6</option>
+          <option value="7" onClick="wave.getState().submitValue('cap', 7);">7</option>
+          <option value="8" onClick="wave.getState().submitValue('cap', 8);">8</option>
+          <option value="9" onClick="wave.getState().submitValue('cap', 9);">9</option>
+          <option value="10" onClick="wave.getState().submitValue('cap', 10);">10</option>
+          <option value="11" onClick="wave.getState().submitValue('cap', 11);">11</option>
+          <option value="12" onClick="wave.getState().submitValue('cap', 12);">12</option>
+          <option value="13" onClick="wave.getState().submitValue('cap', 13);">13</option>
+          <option value="14" onClick="wave.getState().submitValue('cap', 14);">14</option>
+          <option value="15" onClick="wave.getState().submitValue('cap', 15);">15</option>
         </select>
       </form>
     ]]>
