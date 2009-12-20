@@ -82,7 +82,7 @@
       </ul>
       <form>
         <label>Max Value</label>
-        <select name="maxvalue" id="selector" onSelect="set_cap(this.selectedIndex);">
+        <select name="maxvalue" id="selector" onChange="set_cap(this.selectedIndex);">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
