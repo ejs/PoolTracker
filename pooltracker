@@ -34,7 +34,6 @@
 
             function set_cap() {
                 value = document.getElementById("selector").selectedIndex;
-                window.alert(value);
                 wave.getState().submitValue('cap', value);
             }
             
@@ -102,7 +101,7 @@
           <option value="15">15</option>
         </select>
       </form>
-      <button onClick="set_cap()" value="Set Cap" />
+      <button onClick="set_cap()">Set Cap</button>
     ]]>
   </Content>
 </Module>
