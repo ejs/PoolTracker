@@ -33,6 +33,7 @@
             }
 
             function set_cap(value) {
+                window.alert(value);
                 wave.getState().submitValue('cap', value);
             }
             
