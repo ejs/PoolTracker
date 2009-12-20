@@ -33,7 +33,7 @@
             }
 
             function set_cap() {
-                value = document.getElementByID("Selector").selectedIndex;
+                value = document.getElementByID("selector").selectedIndex;
                 window.alert(value);
                 wave.getState().submitValue('cap', value);
             }
