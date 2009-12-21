@@ -60,6 +60,7 @@
                             node.className = 'empty'; 
                         }
                         else {
+                            node.className = 'empty hidden'; 
                             node.style.display = "none";
                         }
                         count += 1;
