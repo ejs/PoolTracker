@@ -61,8 +61,7 @@
                 }
                 for (var i = count; i < avalable ; i ++) {
                     var newdiv = document.createElement('li');
-                    newdiv.onclick = function() { window.alert(this);set_pool(this);}
-                    /* Add an event listener */
+                    newdiv.onclick = function() { set_pool(this);}
                     newdiv.className = (i < active) ? 'full' : 'empty';
                     element.appendChild(newdiv);
                     if (i%5 == 4 ){
