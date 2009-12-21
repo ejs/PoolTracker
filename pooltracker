@@ -50,7 +50,7 @@
                         if ( count >= avalable ) {
                             node.style.display = "";
                             node.className = 'unavalable';
-                            node.style.display = (count <= (avalable + 5)) ? "" : "none";
+                            node.style.display = (count < (avalable + 5)) ? "" : "none";
                         }
                         else if (count < active ){
                             node.style.display = "";
@@ -72,6 +72,11 @@
                     else
                         newdiv.className = 'empty'; 
                     element.appendChild(newdiv);
+                    if (! i%5 ){
+                        var newdevider = document.createElement('li');
+                        newdevider.className="breaker";
+                        element.appendChild(newdevider);
+                    }
                 }
 
                 var selector = document.getElementById("selector");
@@ -84,12 +89,10 @@
                     }
                 }
                 for (var i = count; i <= avalable+5 ; i ++) {
-                    if ( i >= count ) {
-                        var newdiv = document.createElement('option');
-                        newdiv.textContent = i;
-                        newdiv.value = i;
-                        selector.appendChild(newdiv);
-                    }
+                    var newdiv = document.createElement('option');
+                    newdiv.textContent = i;
+                    newdiv.value = i;
+                    selector.appendChild(newdiv);
                 }
                 selector.selectedIndex = avalable;
             }
