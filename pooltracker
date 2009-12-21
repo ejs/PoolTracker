@@ -8,10 +8,9 @@
        <style type="text/css">
           body { font-size: 0.5em; }
           ul { padding: 0; }
-          li { display: inline; height: 1em; float: left;  width : 1em;   margin: 0 0.1em; -moz-border-radius: 1em; -webkit-border-radius: 1em; }
+          li { display: inline; height: 1em; float: left;  width : 1em; margin: 0 0.1em; -moz-border-radius: 1em; -webkit-border-radius: 1em; border: 1px solid black;}
           li.unavalable { display:none; }
-          li.clear { cursor: pointer; }
-          li.empty, li.full{ border: 1px solid black; cursor: pointer; }
+          li.clear, li.full, li.empty { cursor: pointer; }
           li.full { background-color: #000; }
           li.empty { background-color: #DDD; }
           form { display: inline; }
@@ -47,15 +46,10 @@
                 for (var i in element.childNodes) {
                     var node = element.childNodes[i];
                     if (node.className == 'full' || node.className == 'empty' || node.className == 'unavalable') {
-                        if ( count >= avalable ) {
+                        if ( count >= avalable )
                             node.className = 'unavalable'; 
-                        }
-                        else if (count < active ){
-                            node.className = 'full';
-                        }
-                        else{
-                            node.className = 'empty'; 
-                        }
+                        else
+                            node.className = (count < active) ? 'full' : 'empty'; 
                         count += 1;
                     }
                 }
@@ -64,7 +58,7 @@
                     newdiv.onclick = function() { set_pool(this);}
                     newdiv.className = (i < active) ? 'full' : 'empty';
                     element.appendChild(newdiv);
-                    if (i%5 == 4 ){
+                    if (i%5 == 4){
                         var newdevider = document.createElement('li');
                         newdevider.className="breaker";
                         element.appendChild(newdevider);
@@ -74,9 +68,8 @@
                 var selector = document.getElementById("selector");
                 var count = 0;
                 for( var i in selector.childNodes) {
-                    var node = selector.childNodes[i];
-                    if (node.tagName == "OPTION") {
-                        node.style.display = (count < (avalable + 5)) ? "" : "none";
+                    if (selector.childNodes[i].tagName == "OPTION") {
+                        selector.childNodes[i].style.display = (count < (avalable + 5)) ? "" : "none";
                         count += 1;
                     }
                 }
