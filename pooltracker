@@ -56,6 +56,16 @@
                         count += 1;
                     }
                 }
+                for (var i = count; i <= avalable+5 ; i ++) {
+                    var newdiv = document.createElement('li');
+                    if ( i >= avalable )
+                        node.className = 'unavalable';
+                    else if (i < active )
+                        node.className = 'full';
+                    else
+                        node.className = 'empty'; 
+                    element.appendChild(newdiv);
+                }
 
                 var selector = document.getElementById("selector");
                 selector.selectedIndex = avalable;
@@ -67,7 +77,7 @@
                         count += 1;
                     }
                 }
-                for (var i = count; i < avalable+5 ; i ++) {
+                for (var i = count; i <= avalable+5 ; i ++) {
                     var newdiv = document.createElement('option');
                     newdiv.textContent = i;
                     newdiv.value = i;
@@ -75,7 +85,7 @@
                 }
             }
             
-            gadgets.util.registerOnLoadHandler(function() { wave.setStateCallback(updatePool); });
+            gadgets.util.registerOnLoadHandler(function() { wave.setStateCallback(updatePool);updatePool(); });
       </script>
       <ul class="pool" id="pool">
         <li class="clear" onClick="set_pool(this);">X</li>
@@ -91,31 +101,11 @@
         <li class="empty" onClick="set_pool(this);"></li>
         <li class="empty" onClick="set_pool(this);"></li>
         <li class="breaker"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
       </ul>
       <form>
         <label>Max Value</label>
         <select name="maxvalue" id="selector" onClick="set_cap();">
           <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
         </select>
       </form>
       <button onClick="set_cap()">Set Cap</button>
