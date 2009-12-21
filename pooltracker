@@ -55,12 +55,12 @@
                             node.style.display = "";
                             node.className = 'full';
                         }
-                        else if (count < active + 5) {
+                        else if (count <= (active + 5)) {
                             node.style.display = "";
                             node.className = 'empty'; 
                         }
                         else {
-                            node.className = 'empty hidden'; 
+                            node.className = 'empty'; 
                             node.style.display = "none";
                         }
                         count += 1;
