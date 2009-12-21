@@ -47,12 +47,21 @@
                 for (var i in element.childNodes) {
                     var node = element.childNodes[i];
                     if (node.className == 'full' || node.className == 'empty' || node.className == 'unavalable') {
-                        if ( count >= avalable )
+                        if ( count >= avalable ) {
+                            node.style.display = "";
                             node.className = 'unavalable';
-                        else if (count < active )
+                        }
+                        else if (count < active ){
+                            node.style.display = "";
                             node.className = 'full';
-                        else
+                        }
+                        else if (count < active + 5) {
+                            node.style.display = "";
                             node.className = 'empty'; 
+                        }
+                        else {
+                            node.style.display = "none";
+                        }
                         count += 1;
                     }
                 }
