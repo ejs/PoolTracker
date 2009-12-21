@@ -61,6 +61,7 @@
                 }
                 for (var i = count; i < avalable ; i ++) {
                     var newdiv = document.createElement('li');
+                    newdiv.onclick = function() { window.alert(this);set_pool(this);}
                     /* Add an event listener */
                     newdiv.className = (i < active) ? 'full' : 'empty';
                     element.appendChild(newdiv);
