@@ -11,7 +11,7 @@
           li.unavalable { display:none; }
           li.clear, li.full, li.empty { cursor: pointer; }
           li.full { background-color: #000; }
-          li.empty { background-color: #DDD; }
+          li.empty { background-color: #BBB; }
           form { display: inline; font-size: .8em;}
       </style>
       <script type="text/javascript">
