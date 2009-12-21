@@ -61,8 +61,8 @@
                 selector.selectedIndex = avalable;
                 var count = 0;
                 for( var i in selector.options) {
+                    var node = selector.options[i];
                     if (node.tagName == "OPTION") {
-                        var node = selector.options[i];
                         node.style.display = (count < (avalable + 5)) ? "" : "none";
                         count += 1;
                     }
