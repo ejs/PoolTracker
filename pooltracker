@@ -48,9 +48,7 @@
                     var node = element.childNodes[i];
                     if (node.className == 'full' || node.className == 'empty' || node.className == 'unavalable') {
                         if ( count >= avalable ) {
-                            node.style.display = "";
-                            node.className = 'unavalable';
-                            node.style.display = (count < (avalable + 5)) ? "" : "none";
+                            node.style.display = "none";
                         }
                         else if (count < active ){
                             node.style.display = "";
@@ -62,7 +60,7 @@
                         count += 1;
                     }
                 }
-                for (var i = count; i <= avalable+5 ; i ++) {
+                for (var i = count; i <= avalable ; i ++) {
                     var newdiv = document.createElement('li');
                     /* Add an event listener */
                     if ( i >= avalable )
