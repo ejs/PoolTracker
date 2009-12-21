@@ -68,6 +68,7 @@
                 }
                 for (var i = count; i <= avalable+5 ; i ++) {
                     var newdiv = document.createElement('li');
+                    /* Add an event listener */
                     if ( i >= avalable )
                         newdiv.className = 'unavalable';
                     else if (i < active )
@@ -78,7 +79,6 @@
                 }
 
                 var selector = document.getElementById("selector");
-                selector.selectedIndex = avalable;
                 var count = 0;
                 for( var i in selector.options) {
                     var node = selector.options[i];
@@ -88,11 +88,14 @@
                     }
                 }
                 for (var i = count; i <= avalable+5 ; i ++) {
-                    var newdiv = document.createElement('option');
-                    newdiv.textContent = i;
-                    newdiv.value = i;
-                    selector.appendChild(newdiv);
+                    if ( i >= count ) {
+                        var newdiv = document.createElement('option');
+                        newdiv.textContent = i;
+                        newdiv.value = i;
+                        selector.appendChild(newdiv);
+                    }
                 }
+                selector.selectedIndex = avalable;
             }
             
             gadgets.util.registerOnLoadHandler(function() { wave.setStateCallback(updatePool);updatePool(); });
