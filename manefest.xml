@@ -1,0 +1,11 @@
+<extension
+        name="Pool Tracker"
+        thumbnailUrl="http://github.com/ejs/PoolTracker/raw/stable/pool_icon.png"
+        description="Easy tracking of small pools.">
+    <author name="Edward Saxton"/>
+    <menuHook location="toolbar" text="Add Pool Tracker"
+            iconUrl="http://github.com/ejs/PoolTracker/raw/stable/pool_icon.png">
+        <insertGadget
+                url="http://github.com/ejs/PoolTracker/raw/stable/pooltracker"/>
+        </menuHook>
+</extension>
