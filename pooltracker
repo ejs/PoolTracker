@@ -93,18 +93,6 @@
       </script>
       <ul class="pool" id="pool">
         <li class="clear" onClick="set_pool(this);">X</li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="breaker"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="empty" onClick="set_pool(this);"></li>
-        <li class="breaker"></li>
       </ul>
       <form>
         <label>Max Value</label>
