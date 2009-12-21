@@ -41,6 +41,7 @@
                 var state = wave.getState();
                 var avalable = parseInt(state.get('cap', 10));
                 var active = parseInt(state.get('pool', 0));
+
                 var element = document.getElementById("pool");
                 var count = 0;
                 for (var i in element.childNodes) {
@@ -55,7 +56,21 @@
                         count += 1;
                     }
                 }
-                document.getElementById("selector").selectedIndex = avalable;
+
+                var selector = document.getElementById("selector");
+                selector.selectedIndex = avalable;
+                var count = 0;
+                for( var i in selector.options) {
+                    var node = selector.options[i];
+                    node.style.display = ""count > avalable + 5 ? "" : "none";
+                    count += 1;
+                }
+                for (var i = count; i < avalable+5 ; i ++) {
+                    var newdiv = document.createElement('option');
+                    newdiv.textContent = i;
+                    newdiv.value = i;
+                    selector.appendChild(newdiv);
+                }
             }
             
             gadgets.util.registerOnLoadHandler(function() { wave.setStateCallback(updatePool); });
