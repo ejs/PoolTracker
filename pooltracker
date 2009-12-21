@@ -59,11 +59,11 @@
                 for (var i = count; i <= avalable+5 ; i ++) {
                     var newdiv = document.createElement('li');
                     if ( i >= avalable )
-                        node.className = 'unavalable';
+                        newdiv.className = 'unavalable';
                     else if (i < active )
-                        node.className = 'full';
+                        newdiv.className = 'full';
                     else
-                        node.className = 'empty'; 
+                        newdiv.className = 'empty'; 
                     element.appendChild(newdiv);
                 }
 
