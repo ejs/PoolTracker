@@ -9,7 +9,7 @@
           body { font-size: 0.5em; }
           ul { padding: 0; }
           li { display: inline; height: 1em; float: left;  width : 1em;   margin: 0 0.1em; -moz-border-radius: 1em; -webkit-border-radius: 1em; }
-          li.unavalable { border: 1px solid grey; }
+          li.unavalable { display:none; }
           li.clear { cursor: pointer; }
           li.empty, li.full{ border: 1px solid black; cursor: pointer; }
           li.full { background-color: #000; }
@@ -48,10 +48,9 @@
                     var node = element.childNodes[i];
                     if (node.className == 'full' || node.className == 'empty' || node.className == 'unavalable') {
                         if ( count >= avalable ) {
-                            node.style.display = "none";
+                            node.className = 'unavalable'; 
                         }
                         else if (count < active ){
-                            node.style.display = "";
                             node.className = 'full';
                         }
                         else{
@@ -60,15 +59,10 @@
                         count += 1;
                     }
                 }
-                for (var i = count; i <= avalable ; i ++) {
+                for (var i = count; i < avalable ; i ++) {
                     var newdiv = document.createElement('li');
                     /* Add an event listener */
-                    if ( i >= avalable )
-                        newdiv.className = 'unavalable';
-                    else if (i < active )
-                        newdiv.className = 'full';
-                    else
-                        newdiv.className = 'empty'; 
+                    newdiv.className = (i < active) ? 'full' : 'empty';
                     element.appendChild(newdiv);
                     if (i%5 == 4 ){
                         var newdevider = document.createElement('li');
