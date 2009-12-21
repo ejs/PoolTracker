@@ -72,7 +72,7 @@
                     else
                         newdiv.className = 'empty'; 
                     element.appendChild(newdiv);
-                    if (! i%5 ){
+                    if (i%5 == 0 ){
                         var newdevider = document.createElement('li');
                         newdevider.className="breaker";
                         element.appendChild(newdevider);
