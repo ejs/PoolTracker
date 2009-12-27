@@ -55,10 +55,10 @@
                     }
                 }
                 for (var i = count; i < avalable ; i ++) {
-                    var newdiv = document.createElement('li');
-                    newdiv.onclick = function() { set_pool(this);}
-                    newdiv.className = (i < active) ? 'full' : 'empty';
-                    element.appendChild(newdiv);
+                    var newli = document.createElement('li');
+                    newli.onclick = function() { set_pool(this);}
+                    newli.className = (i < active) ? 'full' : 'empty';
+                    element.appendChild(newli);
                     if (i%5 == 4){
                         var newdevider = document.createElement('li');
                         newdevider.className="breaker";
@@ -75,17 +75,17 @@
                     }
                 }
                 for (var i = count; i <= avalable+5 ; i ++) {
-                    var newdiv = document.createElement('option');
-                    newdiv.textContent = i;
-                    newdiv.value = i;
-                    selector.appendChild(newdiv);
+                    var newoption = document.createElement('option');
+                    newoption.textContent = i;
+                    newoption.value = i;
+                    selector.appendChild(newoption);
                 }
                 selector.selectedIndex = avalable;
             }
 
             function updateMode(mode) {
-                var e = document.getElementById('content');
-                e.className = mode == wave.Mode.EDIT ? 'edit' : 'view';
+                document.getElementById('content').className = (mode == wave.Mode.EDIT ? 'edit' : 'view');
+                set_cap();
             }
             
             gadgets.util.registerOnLoadHandler(function() {
