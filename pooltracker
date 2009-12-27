@@ -6,7 +6,7 @@
   <Content type="html">
     <![CDATA[     
        <style type="text/css">
-          #content.edit ul {display : none; }
+          #content.edit #view {display : none; }
           ul { padding: 0; font-size: 0.8em;}
           li { display: inline; height: 1em; float: left;  width : 1em; margin: 0 0.1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;}
           li.unavalable { display:none; }
@@ -14,7 +14,7 @@
           li.full { background-color: #000; }
           li.empty { background-color: #BBB; }
           li.breaker { width: .5em; }
-          #content.view form {display: none; }
+          #content.view #edit {display: none; }
           form { display: inline; font-size: .8em;}
       </style>
       <script type="text/javascript">
@@ -37,24 +37,29 @@
                 wave.getState().submitValue('cap', document.getElementById("selector").selectedIndex);
             }
             
-            function updatePool() {
+            function updateAll() {
                 var state = wave.getState();
-                var avalable = parseInt(state.get('cap', 10));
+                var available = parseInt(state.get('cap', 10));
                 var active = parseInt(state.get('pool', 0));
 
+                update_pool(available, active);
+                update_selector(available);
+            }
+
+            function update_pool(available, active) {
                 var element = document.getElementById("pool");
                 var count = 0;
                 for (var i in element.childNodes) {
                     var node = element.childNodes[i];
                     if (node.className == 'full' || node.className == 'empty' || node.className == 'unavalable') {
-                        if ( count >= avalable )
+                        if ( count >= available )
                             node.className = 'unavalable'; 
                         else
                             node.className = (count < active) ? 'full' : 'empty'; 
                         count += 1;
                     }
                 }
-                for (var i = count; i < avalable ; i ++) {
+                for (var i = count; i < available ; i ++) {
                     var newli = document.createElement('li');
                     newli.onclick = function() { set_pool(this);}
                     newli.className = (i < active) ? 'full' : 'empty';
@@ -65,22 +70,24 @@
                         element.appendChild(newdevider);
                     }
                 }
+            }
 
+            function update_selector(available) {
                 var selector = document.getElementById("selector");
                 var count = 0;
                 for( var i in selector.childNodes) {
                     if (selector.childNodes[i].tagName == "OPTION") {
-                        selector.childNodes[i].style.display = (count <= (avalable + 5)) ? "" : "none";
+                        selector.childNodes[i].style.display = (count <= (available + 5)) ? "" : "none";
                         count += 1;
                     }
                 }
-                for (var i = count; i <= avalable+5 ; i ++) {
+                for (var i = count; i <= available+5 ; i ++) {
                     var newoption = document.createElement('option');
                     newoption.textContent = i;
                     newoption.value = i;
                     selector.appendChild(newoption);
                 }
-                selector.selectedIndex = avalable;
+                selector.selectedIndex = available;
             }
 
             function updateMode(mode) {
@@ -89,17 +96,19 @@
             }
             
             gadgets.util.registerOnLoadHandler(function() {
-                wave.setStateCallback(updatePool);
+                wave.setStateCallback(updateAll);
                 wave.setModeCallback(updateMode);
             });
       </script>
       <div id="content">
-        <ul class="pool" id="pool">
-          <li class="clear" onClick="set_pool(this);">X</li>
-        </ul>
-        <form>
+        <div id="view">
+          <ul class="pool" id="pool">
+            <li class="clear" onClick="set_pool(this);">X</li>
+          </ul>
+        </div>
+        <form id="edit">
           <label>Max Value</label>
-          <select name="maxvalue" id="selector" onClick="set_cap();">
+          <select name="maxvalue" id="selector" onClick="set_cap(this);">
             <option value="0">0</option>
           </select>
         </form>
