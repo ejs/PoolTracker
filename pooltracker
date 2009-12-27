@@ -85,7 +85,7 @@
 
             function updateMode(mode) {
                 var e = document.getElementById('content');
-                e.className = mode == wave.mode.EDIT ? 'edit' : 'view';
+                e.className = mode == wave.Mode.EDIT ? 'edit' : 'view';
             }
             
             gadgets.util.registerOnLoadHandler(function() {
