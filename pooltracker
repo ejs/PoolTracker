@@ -114,7 +114,7 @@
       </script>
       <div id="content">
         <div id="view">
-          <span id="name></span>
+          <span id="name"></span>
           <ul class="pool" id="pool">
             <li class="clear" onClick="set_pool(this);">X</li>
           </ul>
