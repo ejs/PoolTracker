@@ -64,7 +64,7 @@
                     var newli = document.createElement('li');
                     newli.onclick = function() { set_pool(this);}
                     newli.className = (i < active) ? 'full' : 'empty';
-                    newli._count = i;
+                    newli._count = i+1;
                     element.appendChild(newli);
                     if (i%5 == 4){
                         var newdevider = document.createElement('li');
