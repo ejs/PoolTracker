@@ -6,6 +6,7 @@
   <Content type="html">
     <![CDATA[     
        <style type="text/css">
+          #content.edit ul {display : none; }
           ul { padding: 0; font-size: 0.8em;}
           li { display: inline; height: 1em; float: left;  width : 1em; margin: 0 0.1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;}
           li.unavalable { display:none; }
@@ -13,6 +14,7 @@
           li.full { background-color: #000; }
           li.empty { background-color: #BBB; }
           li.breaker { width: .5em; }
+          #content.view form {display: none; }
           form { display: inline; font-size: .8em;}
       </style>
       <script type="text/javascript">
@@ -32,8 +34,7 @@
             }
 
             function set_cap() {
-                value = document.getElementById("selector").selectedIndex;
-                wave.getState().submitValue('cap', value);
+                wave.getState().submitValue('cap', document.getElementById("selector").selectedIndex);
             }
             
             function updatePool() {
@@ -69,7 +70,7 @@
                 var count = 0;
                 for( var i in selector.childNodes) {
                     if (selector.childNodes[i].tagName == "OPTION") {
-                        selector.childNodes[i].style.display = (count < (avalable + 5)) ? "" : "none";
+                        selector.childNodes[i].style.display = (count <= (avalable + 5)) ? "" : "none";
                         count += 1;
                     }
                 }
@@ -81,19 +82,29 @@
                 }
                 selector.selectedIndex = avalable;
             }
+
+            function updateMode(mode) {
+                var e = document.getElementById('content');
+                e.className = mode == wave.mode.EDIT ? 'edit' : 'view';
+            }
             
-            gadgets.util.registerOnLoadHandler(function() { wave.setStateCallback(updatePool);updatePool(); });
+            gadgets.util.registerOnLoadHandler(function() {
+                wave.setStateCallback(updatePool);
+                wave.setModeCallback(updateMode);
+            });
       </script>
-      <ul class="pool" id="pool">
-        <li class="clear" onClick="set_pool(this);">X</li>
-      </ul>
-      <form>
-        <label>Max Value</label>
-        <select name="maxvalue" id="selector" onClick="set_cap();">
-          <option value="0">0</option>
-        </select>
-      </form>
-      <button onClick="set_cap()">Set Cap</button>
+      <div id="content">
+        <ul class="pool" id="pool">
+          <li class="clear" onClick="set_pool(this);">X</li>
+        </ul>
+        <form>
+          <label>Max Value</label>
+          <select name="maxvalue" id="selector" onClick="set_cap();">
+            <option value="0">0</option>
+          </select>
+        </form>
+        <button onClick="set_cap()">Set Cap</button>
+      </div>
     ]]>
   </Content>
 </Module>
