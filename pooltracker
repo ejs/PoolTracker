@@ -20,7 +20,7 @@
       </style>
       <script type="text/javascript">
             function set_pool(item) {
-                wave.getState().submitValue('pool', this._count);
+                wave.getState().submitValue('pool', item._count);
             }
 
             function set_cap() {
