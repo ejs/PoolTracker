@@ -102,8 +102,8 @@
           <select name="maxvalue" id="selector" onClick="set_cap();">
             <option value="0">0</option>
           </select>
+          <button type="Button" onClick="set_cap()">Set Cap</button>
         </form>
-        <button onClick="set_cap()">Set Cap</button>
       </div>
     ]]>
   </Content>
