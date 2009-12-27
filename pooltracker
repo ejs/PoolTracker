@@ -20,18 +20,7 @@
       </style>
       <script type="text/javascript">
             function set_pool(item) {
-                if (item.className != 'unavalable' ) {
-                    var element = item.parentNode;
-                    var count = 0;
-                    for (var i in element.childNodes) {
-                        var node = element.childNodes[i];
-                        if (node.className == 'full' || node.className == 'empty')
-                            count += 1;
-                        if (node == item)
-                            break;
-                    }
-                    wave.getState().submitValue('pool', count);
-                }
+                wave.getState().submitValue('pool', this._count);
             }
 
             function set_cap() {
@@ -75,6 +64,7 @@
                     var newli = document.createElement('li');
                     newli.onclick = function() { set_pool(this);}
                     newli.className = (i < active) ? 'full' : 'empty';
+                    newli._count = i;
                     element.appendChild(newli);
                     if (i%5 == 4){
                         var newdevider = document.createElement('li');
@@ -109,6 +99,7 @@
             }
             
             gadgets.util.registerOnLoadHandler(function() {
+                document.getElementById("clear")._count = 0;
                 wave.setStateCallback(updateAll);
                 wave.setModeCallback(updateMode);
             });
@@ -117,7 +108,7 @@
         <div id="view">
           <span id="name"></span>
           <ul class="pool" id="pool">
-            <li class="clear" onClick="set_pool(this);">X</li>
+            <li class="clear" id="clear" onClick="set_pool(this);">X</li>
           </ul>
         </div>
         <form id="edit">
