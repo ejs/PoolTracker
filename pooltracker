@@ -37,13 +37,24 @@
                 wave.getState().submitValue('cap', document.getElementById("selector").selectedIndex);
             }
             
+            function set_name() {
+                wave.getState().submitValue('name', document.getElementById("namein").value);
+            }
+
             function updateAll() {
                 var state = wave.getState();
                 var available = parseInt(state.get('cap', 10));
                 var active = parseInt(state.get('pool', 0));
+                var name = state.get('name', '');
 
                 update_pool(available, active);
                 update_selector(available);
+                update_name(name);
+            }
+
+            function update_name(name) {
+                document.getElementById('namein').value = name;
+                document.getElementById('name').textContent = name;
             }
 
             function update_pool(available, active) {
@@ -93,6 +104,7 @@
             function updateMode(mode) {
                 document.getElementById('content').className = (mode == wave.Mode.EDIT ? 'edit' : 'view');
                 set_cap();
+                set_name();
             }
             
             gadgets.util.registerOnLoadHandler(function() {
@@ -102,11 +114,14 @@
       </script>
       <div id="content">
         <div id="view">
+          <span id="name></span>
           <ul class="pool" id="pool">
             <li class="clear" onClick="set_pool(this);">X</li>
           </ul>
         </div>
         <form id="edit">
+          <label>Name</label>
+          <input type="text" id="namein" name="name" onBlur="set_name(this);"></input>
           <label>Max Value</label>
           <select name="maxvalue" id="selector" onClick="set_cap(this);">
             <option value="0">0</option>
