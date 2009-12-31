@@ -79,7 +79,7 @@
                         element.appendChild(newdevider);
                     }
                 }
-                document.getElementById("clear").style.display = (lowest == 0 ? "none" : "");
+                document.getElementById("clear").style.display = (lowest > 0 ? "none" : "");
             }
 
             function update_selector(value, highpoint, name) {
