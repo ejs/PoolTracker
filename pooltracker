@@ -42,7 +42,7 @@
                 var active = parseInt(state.get('pool', 0));
                 var name = state.get('name', '');
 
-                update_pool(available, Math.max(active, lowest));
+                update_pool(lowest, available, active);
                 update_selector(available, available+5, "selector");
                 update_selector(lowest, available, "minvalue");
                 update_name(name);
@@ -53,23 +53,24 @@
                 document.getElementById('name').textContent = name;
             }
 
-            function update_pool(available, active) {
+            function update_pool(lowest, available, active) {
                 var element = document.getElementById("pool");
                 var count = 0;
+                var value = Math.max(lowest, active);
                 for (var i in element.childNodes) {
                     var node = element.childNodes[i];
                     if (node.className == 'full' || node.className == 'empty' || node.className == 'unavalable') {
                         if ( count >= available )
                             node.className = 'unavalable'; 
                         else
-                            node.className = (count < active) ? 'full' : 'empty'; 
+                            node.className = (count < value) ? 'full' : 'empty'; 
                         count += 1;
                     }
                 }
                 for (var i = count; i < available ; i ++) {
                     var newli = document.createElement('li');
                     newli.onclick = function() { set_pool(this);}
-                    newli.className = (i < active) ? 'full' : 'empty';
+                    newli.className = (i < value) ? 'full' : 'empty';
                     newli._count = i+1;
                     element.appendChild(newli);
                     if (i%5 == 4){
@@ -78,6 +79,7 @@
                         element.appendChild(newdevider);
                     }
                 }
+                document.getElementById("clear").style.display = (lowest == 0 ? "none" : "");
             }
 
             function update_selector(value, highpoint, name) {
