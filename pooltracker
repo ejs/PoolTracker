@@ -43,8 +43,8 @@
                 var name = state.get('name', '');
 
                 update_pool(available, Math.max(active, lowest));
-                update_selector(available, available+5, "minvalue");
-                update_selector(lowest, available, "selector");
+                update_selector(available, available+5, "selector");
+                update_selector(lowest, available, "minvalue");
                 update_name(name);
             }
 
