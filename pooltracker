@@ -101,6 +101,7 @@
             function updateMode(mode) {
                 document.getElementById('content').className = (mode == wave.Mode.EDIT ? 'edit' : 'view');
                 set_cap();
+                set_min();
                 set_name();
             }
             
