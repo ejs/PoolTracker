@@ -127,7 +127,7 @@
           </select>
 
           <label>Max Value</label>
-          <select name="maxvalue" id="maxvalue" onClick="set_cap('maxvalue', 'cap');" onchange="set_cap('maxvalue', 'min');">
+          <select name="maxvalue" id="maxvalue" onClick="set_cap('maxvalue', 'cap');" onchange="set_cap('maxvalue', 'max');">
             <option value="0">0</option>
           </select>
         </form>
