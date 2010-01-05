@@ -122,12 +122,12 @@
           <input type="text" id="namein" name="name" onBlur="set_name();"></input>
 
           <label>Min Value</label>
-          <select name="minvalue" id="minvalue" onClick="set_cap('minvalue', 'min');">
+          <select name="minvalue" id="minvalue" onClick="set_cap('minvalue', 'min');" onchange="set_cap('minvalue', 'min');">
             <option value="0">0</option>
           </select>
 
           <label>Max Value</label>
-          <select name="maxvalue" id="maxvalue" onClick="set_cap('maxvalue', 'cap');">
+          <select name="maxvalue" id="maxvalue" onClick="set_cap('maxvalue', 'cap');" onchange="set_cap('minvalue', 'min');">
             <option value="0">0</option>
           </select>
         </form>
