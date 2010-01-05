@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-  <ModulePrefs title="Hello Wave" height="35">
+  <ModulePrefs title="Pool Tracker" height="35">
     <Require feature="wave" /> 
   </ModulePrefs>
   <Content type="html">
@@ -39,7 +39,7 @@
                 var name = state.get('name', '');
 
                 update_pool(lowest, available, active);
-                update_selector(available, available+10, "selector");
+                update_selector(available, available+10, "maxvalue");
                 update_selector(lowest, available, "minvalue");
                 update_name(name);
             }
@@ -53,9 +53,10 @@
                 var element = document.getElementById("pool");
                 var count = 0;
                 var value = Math.max(lowest, active);
+                var match = /full|empty|unavalable/;
                 for (var i in element.childNodes) {
                     var node = element.childNodes[i];
-                    if (node.className == 'full' || node.className == 'empty' || node.className == 'unavalable') {
+                    if (match.test(node.className)) {
                         if ( count >= available )
                             node.className = 'unavalable'; 
                         else
@@ -98,7 +99,7 @@
 
             function updateMode(mode) {
                 document.getElementById('content').className = (mode == wave.Mode.EDIT ? 'edit' : 'view');
-                set_cap('selector', 'cap');
+                set_cap('maxvalue', 'cap');
                 set_cap('minvalue', 'min');
                 set_name();
             }
@@ -119,12 +120,14 @@
         <form id="edit">
           <label>Name</label>
           <input type="text" id="namein" name="name" onBlur="set_name();"></input>
+
           <label>Min Value</label>
           <select name="minvalue" id="minvalue" onClick="set_cap('minvalue', 'min');">
             <option value="0">0</option>
           </select>
+
           <label>Max Value</label>
-          <select name="maxvalue" id="selector" onClick="set_cap('selector', 'cap');">
+          <select name="maxvalue" id="maxvalue" onClick="set_cap('maxvalue', 'cap');">
             <option value="0">0</option>
           </select>
         </form>
