@@ -28,16 +28,24 @@
                 wave.getState().submitValue(name, value);
             }
 
+            function reset() {
+                var lowest = parseInt(state.get('min', 0));
+                var reset_value = parseInt(state.get('resetvalue', lowest));
+                set_value(rest_value);
+            }
+
             function updateAll() {
                 var state = wave.getState();
                 var available = parseInt(state.get('cap', 10));
                 var lowest = parseInt(state.get('min', 0));
                 var active = parseInt(state.get('pool', 0));
+                var reset_value = parseInt(state.get('resetvalue', lowest));
                 var name = state.get('name', '');
 
                 update_pool(lowest, available, active);
                 update_selector(available, available+10, "maxvalue");
                 update_selector(lowest, available, "minvalue");
+                update_selector(reset_value, available, "resetvalue");
                 update_name(name);
             }
 
@@ -123,6 +131,11 @@
 
           <label>Max Value</label>
           <select name="maxvalue" id="maxvalue" onchange="set_value(this.selectedIndex, 'cap');">
+            <option value="0">0</option>
+          </select>
+
+          <label>Reset Value</label>
+          <select name="resetvalue" id="resetvalue" onchange="set_value(this.selectedIndex, 'resetvalue');">
             <option value="0">0</option>
           </select>
         </form>
