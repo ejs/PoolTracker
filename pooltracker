@@ -27,10 +27,6 @@
                 wave.getState().submitValue(name, value);
             }
 
-            function set_name() {
-                wave.getState().submitValue('name', document.getElementById("namein").value);
-            }
-
             function updateAll() {
                 var state = wave.getState();
                 var available = parseInt(state.get('cap', 10));
@@ -117,7 +113,7 @@
         </div>
         <form id="edit">
           <label>Name</label>
-          <input type="text" id="namein" name="name" onBlur="set_name();"></input>
+          <input type="text" id="namein" name="name" onchange="set_value(this.value, 'name');"></input>
 
           <label>Min Value</label>
           <select name="minvalue" id="minvalue" onchange="set_value(this.selectedIndex, 'min');">
