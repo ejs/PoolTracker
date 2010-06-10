@@ -7,7 +7,7 @@
     <![CDATA[     
        <style type="text/css">
            #content.edit #view {display : none; }
-           #view span { float: left; font-weight: bold; margin-right: 1em;}
+           #name { float: left; font-weight: bold; margin-right: 1em;}
            ul { padding: 0; margin: 0.2em; float: left; font-size: 0.8em;}
            li { display: inline; height: 1em; float: left;  width : 1em; margin: 0 0.1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;}
            li.unavalable { display:none; }
