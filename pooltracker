@@ -29,6 +29,7 @@
             }
 
             function reset() {
+                var state = wave.getState();
                 var lowest = parseInt(state.get('min', 0));
                 var reset_value = parseInt(state.get('resetvalue', lowest));
                 set_value(rest_value);
