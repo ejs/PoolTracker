@@ -23,14 +23,10 @@
                 wave.getState().submitValue('pool', item._count);
             }
 
-            function set_simple_cap(value, name) {
+            function set_value(value, name) {
                 wave.getState().submitValue(name, value);
             }
 
-            function set_cap(elementId, name) {
-                wave.getState().submitValue(name, document.getElementById(elementId).selectedIndex);
-            }
-            
             function set_name() {
                 wave.getState().submitValue('name', document.getElementById("namein").value);
             }
@@ -124,12 +120,12 @@
           <input type="text" id="namein" name="name" onBlur="set_name();"></input>
 
           <label>Min Value</label>
-          <select name="minvalue" id="minvalue" onchange="set_simple_cap(this.selectedIndex, 'min');">
+          <select name="minvalue" id="minvalue" onchange="set_value(this.selectedIndex, 'min');">
             <option value="0">0</option>
           </select>
 
           <label>Max Value</label>
-          <select name="maxvalue" id="maxvalue" onchange="set_simple_cap(this.selectedIndex, 'cap');">
+          <select name="maxvalue" id="maxvalue" onchange="set_value(this.selectedIndex, 'cap');">
             <option value="0">0</option>
           </select>
         </form>
