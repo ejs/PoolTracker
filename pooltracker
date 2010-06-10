@@ -17,6 +17,7 @@
            li.breaker { width: .5em; }
            #content.view #edit {display: none; }
            form { display: inline; font-size: .8em;}
+           #reset { text-decoration:underline; cursor:pointer;}
       </style>
       <script type="text/javascript">
             function set_pool(item) {
@@ -95,7 +96,6 @@
 
             function updateMode(mode) {
                 document.getElementById('content').className = (mode == wave.Mode.EDIT ? 'edit' : 'view');
-                set_name();
             }
             
             gadgets.util.registerOnLoadHandler(function() {
@@ -110,6 +110,7 @@
           <ul class="pool" id="pool">
             <li class="clear" id="clear" onClick="set_pool(this);">X</li>
           </ul>
+          <span id="reset" onclick="reset()">Reset</span>
         </div>
         <form id="edit">
           <label>Name</label>
