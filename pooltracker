@@ -18,7 +18,7 @@
            #content.view #edit {display: none; }
            form { display: inline; font-size: .8em;}
            #reset { text-decoration:underline; cursor:pointer;}
-           item.noreset .reset { display: none; }
+           #item.noreset .reset { display: none; }
       </style>
       <script type="text/javascript">
             function set_pool(item) {
