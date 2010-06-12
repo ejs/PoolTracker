@@ -18,6 +18,7 @@
            #content.view #edit {display: none; }
            form { display: inline; font-size: .8em;}
            #reset { text-decoration:underline; cursor:pointer;}
+           item.noreset .reset { display: none; }
       </style>
       <script type="text/javascript">
             function set_pool(item) {
@@ -30,13 +31,15 @@
 
             function reset() {
                 var state = wave.getState();
-                var lowest = parseInt(state.get('min', 0));
-                var reset_value = parseInt(state.get('resetvalue', lowest));
+                var reset_value = parseInt(state.get('resetvalue', state.get('min', 0)));
                 set_value(reset_value, 'pool');
             }
 
             function updateAll() {
                 var state = wave.getState();
+                var resetable = state.get('resetable', 0);
+                document.getElementById('item').clasName = (resetable != 0 ? 'reset' : 'noreset');
+
                 var available = parseInt(state.get('cap', 10));
                 var lowest = parseInt(state.get('min', 0));
                 var active = parseInt(state.get('pool', 0));
@@ -114,12 +117,13 @@
             });
       </script>
       <div id="content">
+       <div id="item">
         <div id="view">
           <span id="name"></span>
           <ul class="pool" id="pool">
             <li class="clear" id="clear" onClick="set_pool(this);">X</li>
           </ul>
-          <span id="reset" onclick="reset()">Reset</span>
+          <span class="reset" id="reset" onclick="reset()">Reset</span>
         </div>
         <form id="edit">
           <label>Name</label>
@@ -135,11 +139,15 @@
             <option value="0">0</option>
           </select>
 
-          <label>Reset Value</label>
-          <select name="resetvalue" id="resetvalue" onchange="set_value(this.selectedIndex, 'resetvalue');">
+          <label>Resetable?</label>
+          <input type="checkbox" id="resetable" onchange="set_value(this.checked, 'resetable');" />
+
+          <label class="reset">Reset Value</label>
+          <select name="resetvalue" class="reset" id="resetvalue" onchange="set_value(this.selectedIndex ? 1 : 0, 'resetvalue');">
             <option value="0">0</option>
           </select>
         </form>
+       </div>
       </div>
     ]]>
   </Content>
