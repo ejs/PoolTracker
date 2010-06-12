@@ -39,6 +39,7 @@
                 var state = wave.getState();
                 var resetable = state.get('resetable', 0);
                 document.getElementById('item').clasName = (resetable != 0 ? 'reset' : 'noreset');
+                document.getElementById('resetable').checked = resetable != 0;
 
                 var available = parseInt(state.get('cap', 10));
                 var lowest = parseInt(state.get('min', 0));
@@ -140,10 +141,10 @@
           </select>
 
           <label>Resetable?</label>
-          <input type="checkbox" id="resetable" onchange="set_value(this.checked, 'resetable');" />
+          <input type="checkbox" id="resetable" onchange="set_value(this.checked ? 1 : 0, 'resetable');" />
 
           <label class="reset">Reset Value</label>
-          <select name="resetvalue" class="reset" id="resetvalue" onchange="set_value(this.selectedIndex ? 1 : 0, 'resetvalue');">
+          <select name="resetvalue" class="reset" id="resetvalue" onchange="set_value(this.selectedIndex, 'resetvalue');">
             <option value="0">0</option>
           </select>
         </form>
