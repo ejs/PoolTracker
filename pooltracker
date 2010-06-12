@@ -37,9 +37,9 @@
 
             function updateAll() {
                 var state = wave.getState();
-                var resetable = state.get('resetable', 0);
+                var resetable = parseInt(state.get('resetable', 0));
                 document.getElementById('item').className = (resetable != 0 ? 'reset' : 'noreset');
-                document.getElementById('resetable').checked = resetable != 0;
+                document.getElementById('resetable').checked = (resetable != 0);
 
                 var available = parseInt(state.get('cap', 10));
                 var lowest = parseInt(state.get('min', 0));
